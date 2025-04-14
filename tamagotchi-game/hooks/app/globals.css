@@ -1,0 +1,281 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Paleta de colores principal inspirada en la imagen */
+    --background: 48 33% 94%; /* Fondo crema/beige claro */
+    --foreground: 280 10% 30%; /* Texto principal morado oscuro */
+
+    --card: 48 33% 94%; /* Fondo de tarjetas crema */
+    --card-foreground: 280 10% 30%; /* Texto en tarjetas morado oscuro */
+
+    --popover: 48 33% 94%; /* Fondo de popovers crema */
+    --popover-foreground: 280 10% 30%; /* Texto en popovers morado oscuro */
+
+    --primary: 15 60% 50%; /* Color primario terracota/marrón rojizo */
+    --primary-foreground: 48 33% 94%; /* Texto sobre primario crema */
+
+    --secondary: 48 33% 85%; /* Color secundario beige más oscuro */
+    --secondary-foreground: 280 10% 30%; /* Texto sobre secundario morado oscuro */
+
+    --muted: 48 20% 88%; /* Color atenuado beige claro */
+    --muted-foreground: 280 5% 45%; /* Texto atenuado morado grisáceo */
+
+    --accent: 100 20% 85%; /* Color acento verde muy claro */
+    --accent-foreground: 280 10% 30%; /* Texto sobre acento morado oscuro */
+
+    --destructive: 0 84.2% 60.2%; /* Color destructivo rojo */
+    --destructive-foreground: 48 33% 94%; /* Texto sobre destructivo crema */
+
+    --border: 15 30% 70%; /* Borde terracota claro */
+    --input: 15 30% 70%; /* Borde de inputs terracota claro */
+    --ring: 15 60% 50%; /* Anillo de focus terracota */
+
+    --radius: 0.75rem; /* Radio de bordes redondeados */
+  }
+
+  .dark {
+    --background: 280 15% 15%; /* Fondo oscuro morado */
+    --foreground: 48 33% 94%; /* Texto principal crema */
+
+    --card: 280 15% 20%; /* Fondo de tarjetas morado oscuro */
+    --card-foreground: 48 33% 94%; /* Texto en tarjetas crema */
+
+    --popover: 280 15% 20%; /* Fondo de popovers morado oscuro */
+    --popover-foreground: 48 33% 94%; /* Texto en popovers crema */
+
+    --primary: 15 60% 50%; /* Color primario terracota/marrón rojizo */
+    --primary-foreground: 48 33% 94%; /* Texto sobre primario crema */
+
+    --secondary: 280 10% 25%; /* Color secundario morado más oscuro */
+    --secondary-foreground: 48 33% 94%; /* Texto sobre secundario crema */
+
+    --muted: 280 10% 25%; /* Color atenuado morado oscuro */
+    --muted-foreground: 48 20% 80%; /* Texto atenuado beige claro */
+
+    --accent: 100 15% 30%; /* Color acento verde oscuro */
+    --accent-foreground: 48 33% 94%; /* Texto sobre acento crema */
+
+    --destructive: 0 62.8% 30.6%; /* Color destructivo rojo oscuro */
+    --destructive-foreground: 48 33% 94%; /* Texto sobre destructivo crema */
+
+    --border: 280 10% 40%; /* Borde morado medio */
+    --input: 280 10% 40%; /* Borde de inputs morado medio */
+    --ring: 15 60% 50%; /* Anillo de focus terracota */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Importar fuente pixelada */
+@font-face {
+  font-family: "PixelFont";
+  src: url("/fonts/pixel-font.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+.font-pixel {
+  font-family: "PixelFont", monospace;
+  image-rendering: pixelated;
+  text-rendering: geometricPrecision;
+}
+
+/* Estilos para elementos pixelados */
+.pixel-art {
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+/* Fondo pixelado */
+.pixel-background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url("/images/pixel-landscape.png");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.2;
+  image-rendering: pixelated;
+}
+
+/* Tarjeta pixelada */
+.pixel-card {
+  position: relative;
+  background-color: white;
+  padding: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  border: 4px solid #d97706;
+  image-rendering: pixelated;
+}
+
+.pixel-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 4px solid #92400e;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.pixel-card::after {
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  right: 4px;
+  bottom: 4px;
+  border: 2px solid #fbbf24;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Logo YUBO pixelado */
+.yubo-logo-container {
+  position: relative;
+  width: 48px;
+  height: 48px;
+}
+
+.yubo-logo {
+  width: 100%;
+  height: 100%;
+  background-color: #fbbf24;
+  border: 3px solid #92400e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #92400e;
+  font-weight: bold;
+  position: relative;
+}
+
+.yubo-logo::before {
+  content: "";
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  border: 1px solid #fef3c7;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Borde pixelado */
+.pixel-border {
+  position: relative;
+  image-rendering: pixelated;
+}
+
+.pixel-border::after {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: repeating-linear-gradient(
+    to right,
+    transparent,
+    transparent 4px,
+    rgba(0, 0, 0, 0.1) 4px,
+    rgba(0, 0, 0, 0.1) 8px
+  );
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Contenedor de estado */
+.status-container {
+  display: flex;
+  align-items: center;
+  background-color: #fef3c7;
+  padding: 0.75rem;
+  border: 2px solid #d97706;
+  margin-top: 1rem;
+}
+
+.status-indicator {
+  width: 10px;
+  height: 10px;
+  background-color: #65a30d;
+  margin-right: 10px;
+  box-shadow: 0 0 0 1px #4d7c0f, 0 0 0 2px #84cc16;
+}
+
+.status-indicator.connecting {
+  animation: pixel-pulse 1s infinite steps(2);
+}
+
+.status-indicator.connected {
+  background-color: #22c55e; /* Verde brillante */
+  box-shadow: 0 0 0 1px #16a34a, 0 0 0 2px #4ade80;
+}
+
+.status-text {
+  color: #92400e;
+  font-size: 0.9rem;
+}
+
+/* Animación de pulso pixelada */
+@keyframes pixel-pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Spinner pixelado */
+.pixel-spinner {
+  width: 16px;
+  height: 16px;
+  border: 4px solid #fef3c7;
+  border-radius: 0;
+  border-top-color: #92400e;
+  animation: pixel-spin 1s steps(8) infinite;
+}
+
+@keyframes pixel-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Efecto de desgaste */
+.worn-effect {
+  position: relative;
+}
+
+.worn-effect::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("/images/noise-pattern.png");
+  background-size: 8px 8px;
+  opacity: 0.1;
+  pointer-events: none;
+}
